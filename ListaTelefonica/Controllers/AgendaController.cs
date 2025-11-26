@@ -77,6 +77,9 @@ public class AgendaController : ControllerBase
             return BadRequest(ModelState);
         }
 
+        if (id != contato.Id)
+            return BadRequest("O ID deve ser o mesmo");
+
         var existingById = _contatoRepository.GetById(id);
 
         if (existingById == null)
